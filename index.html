@@ -5,9 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Three</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    #world {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(#e4e0ba, #f7d9aa);
+    }
+  </style>
 </head>
 <body>
-  <h1>TEST</h1>
+  <div id="world"></div>
   <script src="node_modules/lodash/lodash.min.js"></script>
   <script src="node_modules/three/build/three.min.js"></script>
   <script src="built/main.js"></script>
