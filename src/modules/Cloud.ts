@@ -2,8 +2,9 @@ import * as THREE from 'three';
 import {COLORS} from '../const';
 
 export default class Cloud {
-  mesh: THREE.Mesh;
+  mesh: THREE.Object3D;
   constructor () {
+    this.mesh = new THREE.Object3D();
     let geom = new THREE.BoxGeometry(20, 20, 20);
     let mat = new THREE.MeshPhongMaterial({
       color: COLORS.white

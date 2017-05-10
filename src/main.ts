@@ -2,6 +2,7 @@ import * as THREE from 'three';
 
 import {COLORS} from './const';
 import Sea from './modules/Sea';
+import Sky from './modules/Sky';
 
 window.addEventListener('load', init);
 
@@ -88,8 +89,11 @@ function createSea () {
   scene.add(sea.mesh);
 }
 
+let sky;
 function createSky () {
-
+  sky = new Sky();
+  sky.mesh.position.y = -600;
+  scene.add(sky.mesh);
 }
 
 function loop () {
