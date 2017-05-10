@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   externals: {
-    three: 'Three',
+    three: 'THREE',
     lodash: '_'
   },
 }
