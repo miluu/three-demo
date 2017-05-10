@@ -1,0 +1,33 @@
+{
+  "name": "three-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "SET NODE_ENV=develop&gulp watch",
+    "clean": "gulp clean",
+    "server": "gulp server",
+    "build": "SET NODE_ENV=production&gulp clean&gulp"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.0",
+    "json-loader": "^0.5.4",
+    "ts-loader": "^2.0.3",
+    "tslint": "^5.2.0",
+    "typescript": "^2.3.2",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^2.5.1",
+    "webpack-stream": "^3.2.0"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.64",
+    "@types/three": "^0.84.7",
+    "lodash": "^4.17.4",
+    "three": "^0.85.2"
+  }
+}
