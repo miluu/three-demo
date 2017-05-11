@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import {COLORS} from './const';
 import Sea from './modules/Sea';
 import Sky from './modules/Sky';
+import AirPlane from './modules/AirPlane';
 
 window.addEventListener('load', init);
 
@@ -57,7 +58,7 @@ function createScene () {
 }
 
 let hemisphereLight: THREE.HemisphereLight;
-let shadowLight;
+let shadowLight: THREE.DirectionalLight;
 function createLights () {
   hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, 0.9);
   shadowLight = new THREE.DirectionalLight(0xffffff, 0.9);
@@ -78,18 +79,22 @@ function createLights () {
   scene.add(shadowLight);
 }
 
+let airPlane: AirPlane;
 function createPlane () {
-
+  airPlane = new AirPlane();
+  airPlane.mesh.scale.set(0.25, 0.25, 0.25);
+  airPlane.mesh.position.y = 100;
+  scene.add(airPlane.mesh);
 }
 
-let sea;
+let sea: Sea;
 function createSea () {
   sea = new Sea();
   sea.mesh.position.y = -600;
   scene.add(sea.mesh);
 }
 
-let sky;
+let sky: Sky;
 function createSky () {
   sky = new Sky();
   sky.mesh.position.y = -600;
