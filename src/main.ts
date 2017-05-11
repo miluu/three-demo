@@ -14,6 +14,7 @@ function init () {
   createSea();
   createSky();
   loop();
+  document.addEventListener('mousemove', handleMouseMove, false);
 }
 
 let scene: THREE.Scene;
@@ -102,8 +103,12 @@ function createSky () {
 }
 
 function loop () {
-  console.log('loop');
   renderer.render(scene, camera);
+  airPlane.propeller.rotation.x += 0.3;
+  sea.mesh.rotation.z += 0.005;
+  sky.mesh.rotation.z += 0.01;
+  requestAnimationFrame(loop);
+  updatePlane();
 }
 
 function handleWindowResize () {
@@ -112,5 +117,34 @@ function handleWindowResize () {
   renderer.setSize(WIDTH, HEIGHT);
   camera.aspect = WIDTH / HEIGHT;
   camera.updateProjectionMatrix();
+}
+
+interface IPos {
+  x: number;
+  y: number;
+}
+
+let mousePos: IPos = {x: 0, y: 0};
+function handleMouseMove (event: MouseEvent) {
+   let tx = -1 + (event.clientX / WIDTH) * 2;
+   let ty = 1 - (event.clientY / HEIGHT) * 2;
+   mousePos = {x: tx, y: ty};
+}
+
+function updatePlane () {
+   let targetX = normalize(mousePos.x, -1, 1, -100, 100);
+   let targetY = normalize(mousePos.y, -1, 1, 25, 175);
+   airPlane.mesh.position.y = targetY;
+   airPlane.mesh.position.x = targetX;
+   airPlane.propeller.rotation.x += 0.3;
+}
+
+function normalize(v: number, vmin: number, vmax: number, tmin: number, tmax: number) {
+   let nv = Math.max(Math.min(v, vmax), vmin);
+   let dv = vmax - vmin;
+   let pc = (nv - vmin) / dv;
+   let dt = tmax - tmin;
+   let tv = tmin + (pc * dt);
+   return tv;
 }
 
