@@ -60,9 +60,11 @@ function createScene () {
 
 let hemisphereLight: THREE.HemisphereLight;
 let shadowLight: THREE.DirectionalLight;
+let ambientLight: THREE.AmbientLight;
 function createLights () {
   hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, 0.9);
   shadowLight = new THREE.DirectionalLight(0xffffff, 0.9);
+  ambientLight = new THREE.AmbientLight(0xdc8874, 0.5);
 
   shadowLight.position.set(150, 350, 350);
   shadowLight.castShadow = true;
@@ -78,6 +80,7 @@ function createLights () {
 
   scene.add(hemisphereLight);
   scene.add(shadowLight);
+  scene.add(ambientLight);
 }
 
 let airPlane: AirPlane;
