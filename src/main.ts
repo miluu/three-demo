@@ -105,7 +105,7 @@ function createSky () {
 function loop () {
   renderer.render(scene, camera);
   airPlane.propeller.rotation.x += 0.3;
-  sea.mesh.rotation.z += 0.005;
+  sea.moveWaves();
   sky.mesh.rotation.z += 0.01;
   requestAnimationFrame(loop);
   updatePlane();
