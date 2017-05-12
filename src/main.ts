@@ -135,12 +135,12 @@ function handleMouseMove (event: MouseEvent) {
 }
 
 function updatePlane () {
-   let targetX = normalize(mousePos.x, -1, 1, -100, 100);
-   let targetY = normalize(mousePos.y, -1, 1, 25, 175);
-   airPlane.mesh.position.y = targetY;
-   airPlane.mesh.position.x = targetX;
+   let targetY = normalize(mousePos.y, -0.75, 0.75, 25, 175);
+   let targetX = normalize(mousePos.x, -0.75, 0.75, -100, 100);
+   airPlane.mesh.position.y += (targetY - airPlane.mesh.position.y) * 0.1;
+   airPlane.mesh.rotation.z = (targetY - airPlane.mesh.position.y) * 0.0128;
+   airPlane.mesh.rotation.x = (airPlane.mesh.position.y - targetY) * 0.0064;
    airPlane.propeller.rotation.x += 0.3;
-   airPlane.pilot.updateHairs();
 }
 
 function normalize(v: number, vmin: number, vmax: number, tmin: number, tmax: number) {
