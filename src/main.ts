@@ -137,6 +137,7 @@ function updatePlane () {
    airPlane.mesh.position.y = targetY;
    airPlane.mesh.position.x = targetX;
    airPlane.propeller.rotation.x += 0.3;
+   airPlane.pilot.updateHairs();
 }
 
 function normalize(v: number, vmin: number, vmax: number, tmin: number, tmax: number) {

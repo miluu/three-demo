@@ -1,12 +1,15 @@
 import * as THREE from 'three';
+
+import Pilot from './Pilot';
 import {COLORS} from '../const';
 
 export default class AirPlane {
   mesh: THREE.Object3D;
   propeller: THREE.Mesh;
+  pilot: Pilot;
   constructor () {
     this.mesh = new THREE.Object3D();
-
+    this.pilot = new Pilot();
     let geomCockpit = new THREE.BoxGeometry(80, 50, 50, 1, 1, 1);
     let matCockpit = new THREE.MeshPhongMaterial({
       color: COLORS.red,
@@ -79,5 +82,7 @@ export default class AirPlane {
     this.propeller.add(blade);
     this.propeller.position.set(50, 0, 0);
     this.mesh.add(this.propeller);
+    this.pilot.mesh.position.set(0, 30, 0);
+    this.mesh.add(this.pilot.mesh);
   }
 }
