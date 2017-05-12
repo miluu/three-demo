@@ -41,7 +41,7 @@ function createScene () {
   farPlane = 10000;
   camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
   camera.position.x = 0;
-  camera.position.z = 200;
+  camera.position.z = 70;
   camera.position.y = 100;
 
   renderer = new THREE.WebGLRenderer({
@@ -107,6 +107,11 @@ function createSky () {
 
 function loop () {
   renderer.render(scene, camera);
+  if (camera.position.z < 200) {
+    console.log(camera.position.z);
+    camera.position.z += 0.1;
+  }
+  airPlane.pilot.updateHairs();
   airPlane.propeller.rotation.x += 0.3;
   sea.moveWaves();
   sky.mesh.rotation.z += 0.01;
